@@ -24,6 +24,15 @@
     <select id="queryUserById" resultType="com.tjh.mybatis.pojo.User">
         select * from tb_user where id = #{id}
     </select>
+
+    <select id="queryUserListByIds" resultType="com.tjh.mybatis.pojo.User">
+        select * from tb_user where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+
     <select id="queryUserAll" resultType="com.tjh.mybatis.pojo.User">
         select * from tb_user
     </select>

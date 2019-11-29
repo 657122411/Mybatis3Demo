@@ -67,7 +67,7 @@ public class UserDaoTest {
         user.setPassword("654321");
         user.setSex(1);
         user.setUserName("evanjin");
-        user.setId("1");
+        user.setId(3L);
         this.userDao.updateUser(user);
         this.sqlSession.commit();
     }

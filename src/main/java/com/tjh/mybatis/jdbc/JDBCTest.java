@@ -9,6 +9,8 @@ import java.sql.ResultSet;
  * @author TJH
  */
 public class JDBCTest {
+
+    //性能JDBC>mybatis>hibernate
     public static void main(String[] args) throws Exception {
         Connection connection = null;
         PreparedStatement prepareStatement = null;
@@ -20,13 +22,14 @@ public class JDBCTest {
             // 获取连接
             String url = "jdbc:mysql://127.0.0.1:3306/mybatisdemo";
             String user = "root";
-            String password = "123456";
+            String password = "admin";
             connection = DriverManager.getConnection(url, user, password);
             // 获取statement，preparedStatement
             String sql = "select * from tb_user where id=?";
+            //sql与java耦合
             prepareStatement = connection.prepareStatement(sql);
             // 设置参数
-            prepareStatement.setLong(1, 1l);
+            prepareStatement.setLong(1, 2l);
             // 执行查询
             rs = prepareStatement.executeQuery();
             // 处理结果集

@@ -26,6 +26,13 @@ public interface MyUserDao {
     public List<User> queryUserByTableName(@Param("tableName") String tableName);
 
     /**
+     * 按多个Id查询
+     * @param ids
+     * @return
+     */
+    List<User> queryUserListByIds(@Param("ids") String[] ids);
+
+    /**
      * 根据Id查询用户信息
      *
      * @param id

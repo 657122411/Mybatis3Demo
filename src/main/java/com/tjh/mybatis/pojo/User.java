@@ -4,7 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
-    private String id;
+
+    private Long id;
     private String userName;
     private String password;
     private String name;
@@ -14,11 +15,11 @@ public class User {
     private String created;
     private String updated;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

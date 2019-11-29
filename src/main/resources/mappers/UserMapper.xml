@@ -11,6 +11,12 @@
     <!--select * from tb_user where id = #{id}-->
     <!--</select>-->
 
+
+    <!--数据库字段与java代码属性名不一致
+    解决方案1：在sql语句中使用别名：
+    解决方案2： 参考后面的resultMap –mapper具体的配置的时候
+    解决方案3：参考驼峰匹配 — mybatis-config.xml 的时候-->
+
     <!--使用别名-->
     <select id="queryUserById" resultType="com.tjh.mybatis.pojo.User">
       select
@@ -59,6 +65,11 @@
 
     <update id="updateUser" parameterType="com.tjh.mybatis.pojo.User">
         UPDATE tb_user
+        <!--去除最后一行存在","导致sql报错-->
+        /*prefix:在trim标签内sql语句加上前缀。
+        suffix:在trim标签内sql语句加上后缀。
+        suffixOverrides:指定去除多余的后缀内容，如：suffixOverrides=","，去除trim标签内sql语句多余的后缀","。
+        prefixOverrides:指定去除多余的前缀内容*/
         <trim prefix="set" suffixOverrides=",">
             <if test="userName!=null">username = #{userName},</if>
             <if test="password!=null">password = #{password},</if>

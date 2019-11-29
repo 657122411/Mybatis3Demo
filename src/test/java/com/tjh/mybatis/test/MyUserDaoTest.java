@@ -44,12 +44,25 @@ public class MyUserDaoTest {
     }
 
     @Test
+    public void queryUserListByIds() throws Exception {
+        List<User> users = this.myUserDao.queryUserListByIds(new String[]{"1","2","3"});
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
     public void testLogin() {
         System.out.println(this.myUserDao.login("hj", "123456"));
     }
 
     @Test
     public void testQueryUserById() {
+        //mybatis一级缓存默认开启，缓存区命中则无需进数据库查询
+        /*一级缓存满足条件：
+        1、同一个session中
+        2、相同的SQL和参数*/
+        System.out.println(this.myUserDao.queryUserById(2L));
         System.out.println(this.myUserDao.queryUserById(2L));
     }
 
@@ -82,7 +95,7 @@ public class MyUserDaoTest {
         user.setPassword("123456");
         user.setSex(0);
         user.setUserName("Jinjin");
-        user.setId("1");
+        user.setId(1L);
         this.myUserDao.updateUser(user);
     }
 
